@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import rootReducer from './reducers'
 import App from './components/App'
 import Stack from './components/Stack'
+import StackForm from './components/StackForm'
 import './index.css'
 
 const store = createStore(rootReducer)
@@ -16,6 +17,7 @@ const app = (
       <Switch>
         <Route exact path='/' component={App} />
         <Route path='/stack' component={Stack} />
+        <Route path='/stack_form' component={StackForm} />
       </Switch>
     </BrowserRouter>
   </Provider>
