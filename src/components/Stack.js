@@ -22,7 +22,7 @@ class Stack extends Component {
   }
 }
 
-const mapStateToProps = state => ({ stack: state })
+const mapStateToProps = ({ stack }) => ({ stack })
 
 const connectedComponent = connect(mapStateToProps)(Stack)
 
