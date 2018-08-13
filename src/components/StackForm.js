@@ -22,8 +22,28 @@ class StackForm extends Component {
     this.setState({ cards: concatedCards })
   }
 
+  handleTitleChange = ({ target: { value: title } }) => this.setState({ title })
+
+  handleOnChange = (index, type) => ({ target: { value } }) => {
+    const { cards: cardsState } = this.state
+
+    const cards = cardsState.map(card =>
+      card.id === index
+        ? {
+          ...card,
+          [type]: value,
+        }
+        : card)
+
+    this.setState({ cards })
+  }
+
+  addStack = () => console.log(this.state)
+
   render() {
-    console.log(this.state)
+    const { cards } = this.state
+    console.log({ cards })
+
     return (
       <div>
         <Link className='link-home' to='/'>
@@ -37,13 +57,29 @@ class StackForm extends Component {
           <FormGroup>
             <ControlLabel>Title:</ControlLabel>
             {' '}
-            <FormControl />
+            <FormControl onChange={this.handleTitleChange} />
           </FormGroup>
+          {cards.map((card, index) => (
+            <div key={card.id}>
+              <br />
+              <FormGroup>
+                <ControlLabel>Prompt:</ControlLabel>
+                {' '}
+                <FormControl onChange={this.handleOnChange(index, 'prompt')} />
+                {' '}
+                <ControlLabel>Answer:</ControlLabel>
+                {' '}
+                <FormControl onChange={this.handleOnChange(index, 'answer')} />
+              </FormGroup>
+            </div>
+          ))}
         </Form>
         <br />
         <Button onClick={this.addCard}>
           Add Card
         </Button>
+        {' '}
+        <Button onClick={this.addStack}>Save and Add the Stack</Button>
       </div>
     )
   }
