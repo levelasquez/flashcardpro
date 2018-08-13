@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Card from './Card'
 
 class Stack extends Component {
   render() {
@@ -12,9 +13,7 @@ class Stack extends Component {
         <h3>{title}</h3>
         <br />
         {cards.map(card => (
-          <div key={card.id}>
-            {card.prompt}
-          </div>
+          <Card key={card.id} card={card} />
         ))}
       </div>
     )
