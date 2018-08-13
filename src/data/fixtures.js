@@ -11,3 +11,5 @@ export const stack = {
     answer: 'test answer 2',
   }],
 }
+
+export const stacks = [stack]
