@@ -5,17 +5,17 @@ import stacks from '../data/stacks.json'
 import { setStack } from '../actions'
 
 class StackList extends Component {
-  handleClick = stack => {
+  handleClick = stacks => () => {
     const { setStack } = this.props
 
-    setStack(stack)
+    setStack(stacks)
   }
 
   render() {
     return (
       <div>
         {stacks.map(stack => (
-          <Link key={stack.id} to='/stack' onClick={this.handleClick}>
+          <Link key={stack.id} to='/stack' onClick={this.handleClick(stacks[stack.id])}>
             <h4>{stack.title}</h4>
           </Link>
         ))}
