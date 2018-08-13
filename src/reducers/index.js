@@ -1,4 +1,4 @@
-import SET_STACK from '../actions'
+import { SET_STACK } from '../actions'
 
 const stack = (state = {}, action) => {
   switch (action.type) {
